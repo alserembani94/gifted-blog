@@ -10,7 +10,6 @@ export default function App(props: AppProps) {
   return (
     <main className={poppins.className}>
       <Head>
-        <title>GIFT.ed</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"

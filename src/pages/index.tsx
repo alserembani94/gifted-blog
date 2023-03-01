@@ -1,14 +1,13 @@
 import BlogCard from "@component/components/BlogCard";
-import { blogsList, likeList } from "@component/mocks/blogs";
+import { Blog, blogsList, Like, likeList } from "@component/mocks/blogs";
 import { bitter } from "@component/utils/fonts";
-import { titleColor } from "@component/utils/themes";
 import { Container, SimpleGrid, Space, Title } from "@mantine/core";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 
 type Props = {
-  blogs: typeof blogsList;
-  likes: typeof likeList;
+  blogs: Blog[];
+  likes: Like[];
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {

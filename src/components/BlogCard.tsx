@@ -1,7 +1,7 @@
 import { Blog } from "@component/mocks/blogs";
 import { bitter } from "@component/utils/fonts";
 import { titleColor } from "@component/utils/themes";
-import { Anchor, Flex, Image, Space, Text, Title } from "@mantine/core";
+import { Flex, Image, Space, Text, Title } from "@mantine/core";
 import Link from "next/link";
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 
 const BlogCard = ({ blog, orientation = "column" }: Props) => {
   return (
-    <Flex direction={orientation}>
+    <Flex direction={orientation} sx={{ padding: "8px" }}>
       <Image src={blog.thumbnail} alt={blog.title} />
       <Space h="lg" />
       <Text
@@ -38,6 +38,7 @@ const BlogCard = ({ blog, orientation = "column" }: Props) => {
       >
         {blog.content}
       </Text>
+      <Space h="lg" />
       <Link href={`/${blog.slug}`}>Read more</Link>
     </Flex>
   );
