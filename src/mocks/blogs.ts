@@ -13,6 +13,7 @@ export type Blog = {
   category: string;
   videoUrl: string;
   thumbnail: string;
+  pinnedComment: number;
 };
 
 export type Comment = {
@@ -23,16 +24,20 @@ export type Comment = {
   content: string;
   postOn: string;
   likes: number;
-  replies: {
+  edited: boolean;
+  replies?: {
+    id: number;
     user: {
       name: string;
       avatar: string;
     };
+    postOn: string;
+    edited: boolean;
     likes: number;
     content: string;
   }[];
   id: number;
-  blogId: number;
+  blogId?: number;
 };
 
 export type Like = {
@@ -63,11 +68,17 @@ const generateComment = () => ({
   user: user[0],
   content: faker.lorem.paragraphs(2),
   likes: faker.datatype.number(),
+  edited: faker.datatype.boolean(),
   replies: [
     {
+      id: 1,
       user: user[0],
       content: faker.lorem.paragraph(),
       likes: faker.datatype.number(),
+      edited: faker.datatype.boolean(),
+      postOn: new Date(
+        faker.date.between(blogsList[0].publishedOn, "2023-02-01T00:00:00.000Z")
+      ).toISOString(),
     },
   ],
 });
@@ -90,7 +101,7 @@ const generateBlog = (id: number) => {
       "https://cdn.videvo.net/videvo_files/video/premium/video0398/large_watermarked/902-1_902-2821-PD2_preview.mp4",
     thumbnail:
       "https://www.techsmith.com/blog/wp-content/uploads/2021/02/video-thumbnails-social.png",
-    pinnedComment: 0,
+    pinnedComment: 1,
   };
 };
 
@@ -98,7 +109,7 @@ export const blogsList = new Array(blogsLength)
   .fill({})
   .map((_, index) => generateBlog(index));
 
-export const commentList = [
+export const commentList: Comment[] = [
   {
     id: 1,
     blogId: blogsList[0].slug,

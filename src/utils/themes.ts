@@ -17,8 +17,21 @@ export const theme: MantineThemeOverride | undefined = {
       "#49020f",
       "#1f0003",
     ],
+    lightGray: [
+      "#f8f0f2",
+      "#d9d9d9",
+      "#bfbfbf",
+      "#a6a6a6",
+      "#8c8c8c",
+      "#737373",
+      "#595959",
+      "#404040",
+      "#262626",
+      "#120b0d",
+    ],
   },
   primaryColor: "brand",
+  primaryShade: 5,
 
   headings: {
     fontFamily: "Bitter, Roboto, sans-serif",
